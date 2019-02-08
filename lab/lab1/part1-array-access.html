@@ -75,9 +75,45 @@
 
     ===================== */
 
+    // Task 1 one marker for one restaurant
+    var restaurantData = [[39.955080, -75.193839, 'Sangkee'],
+                          [39.953557, -75.140178, 'La Peg'],
+                          [39.949066, -75.145775, 'the Little Lion']];
+
+  
+    console.log(restaurantData)
+    console.log(Array.isArray(restaurantData))
+    
+    // Task 2 plot them
+    for (let i = 0; i < restaurantData.length; i++){
+      L.marker([restaurantData[i][0],restaurantData[i][1]]).addTo(map);
+     }
+    
+    // Task 3 & 4 add two more restaurants and their Markers
+    var restaurant1 = [39.947125, -75.143833, 'the Olde Bar']
+    var restaurant2 = [39.948551, -75.174533 ,'Szechuan Hunan Restaurant']
+    restaurantData.push(restaurant1,restaurant2) // why "var restaurantDataN = restaurantData.push(A,B) will turn 
+                                                // into an object?
+    
+    
+    console.log(restaurantData)
+    console.log(Array.isArray(restaurantData)) 
+    
+    for (let j = 0; j < restaurantData.length; j++){
+       L.marker([restaurantData[j][0],restaurantData[j][1]])
+       .addTo(map)
+       .bindPopup(restaurantData[j][2]);
+    
+    }
+     
+  
+    
+   
+    /*
     L.marker([0, 0]).addTo(map);
     L.marker([0, 0]).addTo(map);
     L.marker([0, 0]).addTo(map);
+    */
 
     /* =====================
 

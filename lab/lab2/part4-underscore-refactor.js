@@ -32,14 +32,14 @@
 
 
   // clean data
-  for (var i = 0; i < schools.length - 1; i++) {
+ /* for (var i = 0; i < schools.length - 1; i++) {
     // If we have '19104 - 1234', splitting and taking the first (0th) element
     // as an integer should yield a zip in the format above
     if (typeof schools[i].ZIPCODE === 'string') {
       split = schools[i].ZIPCODE.split(' ');
       normalized_zip = parseInt(split[0]);
       schools[i].ZIPCODE = normalized_zip;
-    }
+    }*/
 
     // Check out the use of typeof here — this was not a contrived example.
     // Someone actually messed up the data entry
@@ -54,7 +54,7 @@
       schools[i].HAS_MIDDLE_SCHOOL = schools[i].GRADE_LEVEL.toUpperCase().indexOf('MID') >= 0;
       schools[i].HAS_HIGH_SCHOOL = schools[i].GRADE_LEVEL.toUpperCase().indexOf('HIGH') >= 0;
     }
-  }
+ 
 
   // filter data
   var filtered_data = [];
@@ -107,4 +107,4 @@
       .addTo(map);
   }
 
-})();
+}());

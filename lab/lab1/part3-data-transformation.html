@@ -63,14 +63,52 @@
 
     ===================== */
 
-    var data = bikeArrayClean;
+    var data = bikeArrayDirty;
 
     /* =====================
 
     Start code to filter data
 
     ===================== */
-
+    // Clean Data
+    /*var dataFiltered = [];
+    // Data Processing
+    for(i = 0; i < bikeArrayClean.length; i++){
+      if (bikeArrayClean[i][3]>20){
+        dataFiltered.push(bikeArrayClean[i]);
+      }
+    };
+    // Add Markers to the map
+    for(j = 0; j > dataFiltered.length; j++){
+      L.marker([dataFiltered[j][1],dataFiltered[j][0]]).addTo(map);
+    }*/
+    
+    // Working with Dirty Data
+    var dataProcessed = [];
+    for( i = 0; i < data.length; i++){
+      if( data[i].length === 5){
+        delete data[i][0];
+        data[i][0] = Number(data[i][0]);
+        data[i][1] = Number(data[i][1]);
+        data[i][3] = parseInt(data[i][3], 10);
+        if (data[i][3] > 20){
+          dataFiltered.push(data[i])
+        }
+      } else if (data[i].length === 4) {
+        data[i][0] = Number(data[i][0]);
+        data[i][1] = Number(data[i][1]);
+        data[i][3] = parseInt(data[i][3], 10);
+        if (data[i][3] > 20){
+          dataFiltered.push(data[i])
+      }
+     }
+    }
+    console.log(dataFiltered)
+    // Add Markers
+      for (j = 0; j<dataFiltered.length; j++) {
+        L.marker([dataFiltered[j][1],dataFiltered[j][0]]).addTo(map).bindPopup("<b>" + dataFiltered[j][2] + ', ' + dataFiltered[j][3] + ' docks' + "</b>");
+      }
+  
 
 
     /* =====================
