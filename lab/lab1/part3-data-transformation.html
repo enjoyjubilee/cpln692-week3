@@ -13,14 +13,14 @@
 
     <!--javascript imports-->
     <script src="leaflet.js"></script>
-    <script src="part4-data-clean.js"></script>
-    <script src="part4-data-dirty.js"></script>
+    <script src="part3-data-clean.js"></script>
+    <script src="part3-data-dirty.js"></script>
 
     <script>
 
     /* =====================
 
-    # Lab 1, Part 4 — Data Transformation
+    # Lab 1, Part 3 — Data Transformation
 
     ## Introduction
 
@@ -63,28 +63,23 @@
 
     ===================== */
 
+    //var data = bikeArrayClean;
     var data = bikeArrayDirty;
-
     /* =====================
 
     Start code to filter data
 
     ===================== */
-    // Clean Data
-    /*var dataFiltered = [];
     // Data Processing
-    for(i = 0; i < bikeArrayClean.length; i++){
+    var dataFiltered = [];
+
+    /*for(let i = 0; i < bikeArrayClean.length; i++){
       if (bikeArrayClean[i][3]>20){
         dataFiltered.push(bikeArrayClean[i]);
       }
-    };
-    // Add Markers to the map
-    for(j = 0; j > dataFiltered.length; j++){
-      L.marker([dataFiltered[j][1],dataFiltered[j][0]]).addTo(map);
-    }*/
-    
+    };*/
+
     // Working with Dirty Data
-    var dataProcessed = [];
     for( i = 0; i < data.length; i++){
       if( data[i].length === 5){
         delete data[i][0];
@@ -102,13 +97,8 @@
           dataFiltered.push(data[i])
       }
      }
-    }
-    console.log(dataFiltered)
-    // Add Markers
-      for (j = 0; j<dataFiltered.length; j++) {
-        L.marker([dataFiltered[j][1],dataFiltered[j][0]]).addTo(map).bindPopup("<b>" + dataFiltered[j][2] + ', ' + dataFiltered[j][3] + ' docks' + "</b>");
-      }
-  
+   }
+
 
 
     /* =====================
@@ -136,7 +126,9 @@
 
     ===================== */
 
-
+    for (let j = 0; j < dataFiltered.length; j++) {
+      L.marker([dataFiltered[j][1], dataFiltered[j][0]]).addTo(map);
+    }
 
     /* =====================
 
